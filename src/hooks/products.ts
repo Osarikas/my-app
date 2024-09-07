@@ -5,12 +5,16 @@ export function useProducts() {
   const [products, setProducts] = React.useState<IProduct[]>([])
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState('')
+  function addProduct(product: IProduct) {
+    setProducts((prev) => [...prev, product])
+  }
+
   async function fetchProducts() {
     try {
       setError('')
       setLoading(true)
       const response = await axios.get<IProduct[]>(
-        'https://fake-store-api.mock.beeceptor.com/api/products'
+        'https://fakestoreapi.com/products'
       )
       setProducts(response.data)
       setLoading(false)
@@ -23,5 +27,5 @@ export function useProducts() {
   useEffect(() => {
     fetchProducts()
   }, [])
-  return { products, error, loading }
+  return { products, error, loading, addProduct }
 }

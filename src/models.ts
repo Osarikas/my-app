@@ -1,25 +1,9 @@
 export interface IProduct {
-  product_id: number
-  name: string
-  description: string
+  id?: number
+  title: string
   price: number
-  unit: string
-  image: string
-  discount: number
-  availability: boolean
-  brand: string
+  description: string
   category: string
-  rating: number
-  reviews: [
-    {
-      user_id: number
-      rating: number
-      comment: string
-    },
-    {
-      user_id: number
-      rating: number
-      comment: string
-    }
-  ]
+  image: string
+  rating: { rate: number; count: number }
 }
